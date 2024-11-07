@@ -390,16 +390,6 @@
               <FilePath>.\main.c</FilePath>
             </File>
             <File>
-              <FileName>initialization.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\initialization.c</FilePath>
-            </File>
-            <File>
-              <FileName>initialization.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\initialization.h</FilePath>
-            </File>
-            <File>
               <FileName>buttons.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\buttons.c</FilePath>
@@ -408,6 +398,26 @@
               <FileName>buttons.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\buttons.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\GPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>timers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\timers.c</FilePath>
+            </File>
+            <File>
+              <FileName>timers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\timers.h</FilePath>
             </File>
           </Files>
         </Group>

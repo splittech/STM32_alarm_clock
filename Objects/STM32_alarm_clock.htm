@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\STM32_alarm_clock.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\STM32_alarm_clock.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sun Nov  3 23:11:21 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Thu Nov  7 23:43:19 2024
 <BR><P>
 <H3>Maximum Stack Usage =         36 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; InitGPIO &rArr; EnablePinOutput
+__rt_entry_main &rArr; main &rArr; GPIO_Init &rArr; GPIO_EnablePinOutput
 <P>
 <H3>
 Functions with no stack information
@@ -207,7 +207,7 @@ Global Symbols
 
 <P><STRONG><a name="[40]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; InitGPIO &rArr; EnablePinOutput
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; GPIO_Init &rArr; GPIO_EnablePinOutput
 </UL>
 <BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -469,45 +469,29 @@ Global Symbols
 
 <P><STRONG><a name="[80]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[53]"></a>DebounceHandler</STRONG> (Thumb, 172 bytes, Stack size 12 bytes, buttons.o(.text.DebounceHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = DebounceHandler
+<P><STRONG><a name="[53]"></a>BUTTONS_DebounceHandler</STRONG> (Thumb, 172 bytes, Stack size 12 bytes, buttons.o(.text.BUTTONS_DebounceHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = BUTTONS_DebounceHandler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4b]"></a>EnablePinInput</STRONG> (Thumb, 130 bytes, Stack size 4 bytes, initialization.o(.text.EnablePinInput))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = EnablePinInput
+<P><STRONG><a name="[4b]"></a>GPIO_EnablePinInput</STRONG> (Thumb, 130 bytes, Stack size 4 bytes, gpio.o(.text.GPIO_EnablePinInput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = GPIO_EnablePinInput
 </UL>
-<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGPIO
-</UL>
-
-<P><STRONG><a name="[4a]"></a>EnablePinOutput</STRONG> (Thumb, 126 bytes, Stack size 4 bytes, initialization.o(.text.EnablePinOutput))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = EnablePinOutput
-</UL>
-<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGPIO
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 
-<P><STRONG><a name="[49]"></a>InitGPIO</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, initialization.o(.text.InitGPIO))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = InitGPIO &rArr; EnablePinOutput
+<P><STRONG><a name="[4a]"></a>GPIO_EnablePinOutput</STRONG> (Thumb, 126 bytes, Stack size 4 bytes, gpio.o(.text.GPIO_EnablePinOutput))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = GPIO_EnablePinOutput
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnablePinOutput
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnablePinInput
-</UL>
-<BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 
-<P><STRONG><a name="[4c]"></a>InitTIM3</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, initialization.o(.text.InitTIM3))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = InitTIM3 &rArr; __NVIC_EnableIRQ
+<P><STRONG><a name="[49]"></a>GPIO_Init</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, gpio.o(.text.GPIO_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Init &rArr; GPIO_EnablePinOutput
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
-</UL>
-<BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[4e]"></a>InitTIM4</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, initialization.o(.text.InitTIM4))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = InitTIM4 &rArr; __NVIC_EnableIRQ
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
+<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EnablePinOutput
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EnablePinInput
 </UL>
 <BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -518,7 +502,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[51]"></a>SystemCoreClockConfigure</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, initialization.o(.text.SystemCoreClockConfigure))
+<P><STRONG><a name="[51]"></a>SystemCoreClockConfigure</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, main.o(.text.SystemCoreClockConfigure))
 <BR><BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -531,26 +515,42 @@ Global Symbols
 <P><STRONG><a name="[35]"></a>SystemInit</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, system_stm32f10x.o(.text.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
 <P><STRONG><a name="[27]"></a>TIM3_IRQHandler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, main.o(.text.TIM3_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
+<P><STRONG><a name="[4e]"></a>TIM3_Init</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, timers.o(.text.TIM3_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM3_Init &rArr; __NVIC_EnableIRQ
+</UL>
+<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
+</UL>
+<BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
 <P><STRONG><a name="[28]"></a>TIM4_IRQHandler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, main.o(.text.TIM4_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[41]"></a>main</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, main.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = main &rArr; InitGPIO &rArr; EnablePinOutput
+<P><STRONG><a name="[50]"></a>TIM4_Init</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, timers.o(.text.TIM4_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM4_Init &rArr; __NVIC_EnableIRQ
 </UL>
-<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DebounceHandler
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGPIO
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitTIM4
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitTIM3
+<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
+</UL>
+<BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[41]"></a>main</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, main.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = main &rArr; GPIO_Init &rArr; GPIO_EnablePinOutput
+</UL>
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTONS_DebounceHandler
+<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Init
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_Init
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockUpdate
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockConfigure
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SwitchPin
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemCoreClockConfigure
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -558,25 +558,25 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[4d]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, initialization.o(.text.__NVIC_EnableIRQ))
+<P><STRONG><a name="[4f]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, timers.o(.text.__NVIC_EnableIRQ))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = __NVIC_EnableIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitTIM4
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitTIM3
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Init
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_Init
 </UL>
 
-<P><STRONG><a name="[4f]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(.text.SetSysClock))
+<P><STRONG><a name="[4c]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(.text.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[50]"></a>SetSysClockTo72</STRONG> (Thumb, 290 bytes, Stack size 16 bytes, system_stm32f10x.o(.text.SetSysClockTo72))
+<P><STRONG><a name="[4d]"></a>SetSysClockTo72</STRONG> (Thumb, 290 bytes, Stack size 16 bytes, system_stm32f10x.o(.text.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <P>
 <H3>

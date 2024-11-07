@@ -1,7 +1,8 @@
 --cpu Cortex-M3
 ".\objects\main.o"
-".\objects\initialization.o"
 ".\objects\buttons.o"
+".\objects\gpio.o"
+".\objects\timers.o"
 ".\objects\buttons_nucleo_f103rb.o"
 ".\objects\led_nucleo_f103rb.o"
 ".\objects\startup_stm32f10x_md.o"
