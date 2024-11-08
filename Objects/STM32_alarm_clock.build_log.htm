@@ -22,140 +22,107 @@ Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
 C:\Users\snego\Documents\STM32_alarm_clock\STM32_alarm_clock.uvprojx
-Project File Date:  11/07/2024
+Project File Date:  11/08/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
+main.c(2): warning: In file included from...
+./SSD1306.h(4): warning: // comments are not allowed in this language [-Wcomment]
+// <C0><E4><F0><E5><F1> <E4><E8><F1><EF><EB><E5><FF>
+^
+./SSD1306.h(28): warning: no newline at end of file [-Wnewline-eof]
+void OLED_WriteTime(uint8_t hourTens, uint8_t hourUnits, uint8_t minuteTens, uint8_t minuteUnits, uint8_t mode, uint8_t highlightedNumber);
+                                                                                                                                           ^
 main.c(3): warning: In file included from...
-./initialization.h(1): warning: no newline at end of file [-Wnewline-eof]
-#include "stdint.h"
-                   ^
-main.c(4): warning: In file included from...
-./buttons.h(3): warning: no newline at end of file [-Wnewline-eof]
-uint8_t BUTTONS_DebounceHandler(uint16_t buttonState, uint8_t buttonNumber, uint32_t debounceLimit);
-                                                                                                    ^
-main.c(6): warning: no previous extern declaration for non-static variable 'LED_PIN' [-Wmissing-variable-declarations]
-uint8_t LED_PIN = 7;
-        ^
-main.c(6): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t LED_PIN = 7;
+./GPIO.h(13): warning: no newline at end of file [-Wnewline-eof]
+void GPIO_Init (uint8_t ledPin, uint8_t button1Pin, uint8_t button2Pin, uint8_t button3Pin, uint8_t button4Pin);
+                                                                                                                ^
+main.c(5): warning: In file included from...
+./timers.h(13): warning: no newline at end of file [-Wnewline-eof]
+void TIM4_Init(void);
+                     ^
+main.c(22): warning: // comments are not allowed in this language [-Wcomment]
+        RCC->CR |= ((uint32_t)RCC_CR_HSION);                     // Enable HSI
+                                                                 ^
+main.c(20): warning: no previous prototype for function 'SystemCoreClockConfigure' [-Wmissing-prototypes]
+void SystemCoreClockConfigure(void) {
+     ^
+main.c(20): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void SystemCoreClockConfigure(void) {
 ^
-main.c(7): warning: no previous extern declaration for non-static variable 'BUTTON_1_PIN' [-Wmissing-variable-declarations]
-uint8_t BUTTON_1_PIN = 5;
-        ^
-main.c(7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t BUTTON_1_PIN = 5;
+static 
+main.c(46): warning: no previous prototype for function 'updateScreen' [-Wmissing-prototypes]
+void updateScreen(){
+     ^
+main.c(46): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void updateScreen(){
 ^
-main.c(8): warning: no previous extern declaration for non-static variable 'BUTTON_2_PIN' [-Wmissing-variable-declarations]
-uint8_t BUTTON_2_PIN = 6;
+static 
+main.c(46): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+void updateScreen(){
+                 ^
+main.c(59): warning: no previous prototype for function 'TIM3_IRQHandler' [-Wmissing-prototypes]
+void TIM3_IRQHandler () {
+     ^
+main.c(59): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void TIM3_IRQHandler () {
+^
+static 
+main.c(59): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+void TIM3_IRQHandler () {
+                     ^
+main.c(96): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint8_t' (aka 'unsigned char') [-Wimplicit-int-conversion]
+        clockTime.hours = totalSeconds / 3600;
+                        ~ ~~~~~~~~~~~~~^~~~~~
+main.c(87): warning: no previous prototype for function 'TIM4_IRQHandler' [-Wmissing-prototypes]
+void TIM4_IRQHandler () {
+     ^
+main.c(87): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void TIM4_IRQHandler () {
+^
+static 
+main.c(87): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
+void TIM4_IRQHandler () {
+                     ^
+main.c(129): warning: no newline at end of file [-Wnewline-eof]
+}
+ ^
+main.c(8): warning: no previous extern declaration for non-static variable 'highlightedNumber' [-Wmissing-variable-declarations]
+uint8_t highlightedNumber;
         ^
 main.c(8): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t BUTTON_2_PIN = 6;
+uint8_t highlightedNumber;
 ^
-main.c(9): warning: no previous extern declaration for non-static variable 'BUTTON_3_PIN' [-Wmissing-variable-declarations]
-uint8_t BUTTON_3_PIN = 8;
+main.c(9): warning: no previous extern declaration for non-static variable 'mode' [-Wmissing-variable-declarations]
+uint8_t mode;
         ^
 main.c(9): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t BUTTON_3_PIN = 8;
+uint8_t mode;
 ^
-main.c(10): warning: no previous extern declaration for non-static variable 'BUTTON_4_PIN' [-Wmissing-variable-declarations]
-uint8_t BUTTON_4_PIN = 9;
-        ^
+main.c(10): warning: no previous extern declaration for non-static variable 'totalSeconds' [-Wmissing-variable-declarations]
+uint32_t totalSeconds;
+         ^
 main.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t BUTTON_4_PIN = 9;
+uint32_t totalSeconds;
 ^
-main.c(12): warning: no previous extern declaration for non-static variable 'DEBOUNCE_LIMIT' [-Wmissing-variable-declarations]
-uint32_t DEBOUNCE_LIMIT = 100;
-         ^
-main.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t DEBOUNCE_LIMIT = 100;
-^
-main.c(24): warning: // comments are not allowed in this language [-Wcomment]
-        // <C2><EA><EB><FE><F7><E0><E5><EC> HSE
-        ^
-main.c(23): warning: no previous prototype for function 'SystemCoreClockConfigure' [-Wmissing-prototypes]
-void SystemCoreClockConfigure(void) {
-     ^
-main.c(23): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void SystemCoreClockConfigure(void) {
-^
-static 
-main.c(42): warning: operator '<<' has lower precedence than '+'; '+' will be evaluated first [-Wshift-op-parentheses]
-                GPIOA->BSRR = 1 << pin_number + 16;
-                                ~~ ~~~~~~~~~~~^~~~
-main.c(42): note: place parentheses around the '+' expression to silence this warning
-                GPIOA->BSRR = 1 << pin_number + 16;
-                                              ^
-                                   (              )
-main.c(40): warning: no previous prototype for function 'SwitchPin' [-Wmissing-prototypes]
-void SwitchPin (uint8_t pin_number) {
-     ^
-main.c(40): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void SwitchPin (uint8_t pin_number) {
-^
-static 
-main.c(49): warning: no previous prototype for function 'TIM3_IRQHandler' [-Wmissing-prototypes]
-void TIM3_IRQHandler () {
-     ^
-main.c(49): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void TIM3_IRQHandler () {
-^
-static 
-main.c(49): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
-void TIM3_IRQHandler () {
-                     ^
-main.c(56): warning: no previous prototype for function 'TIM4_IRQHandler' [-Wmissing-prototypes]
-void TIM4_IRQHandler () {
-     ^
-main.c(56): note: declare 'static' if the function is not intended to be used outside of this translation unit
-void TIM4_IRQHandler () {
-^
-static 
-main.c(56): warning: this old-style function definition is not preceded by a prototype [-Wstrict-prototypes]
-void TIM4_IRQHandler () {
-                     ^
-main.c(68): warning: implicit declaration of function 'TIM3_Init' [-Wimplicit-function-declaration]
-        TIM3_Init();
-        ^
-main.c(69): warning: implicit declaration of function 'TIM4_Init' [-Wimplicit-function-declaration]
-        TIM4_Init();
-        ^
-main.c(71): warning: implicit declaration of function 'GPIO_Init' [-Wimplicit-function-declaration]
-        GPIO_Init(LED_PIN, BUTTON_1_PIN, BUTTON_2_PIN, BUTTON_3_PIN, BUTTON_4_PIN);
-        ^
-main.c(74): warning: implicit conversion loses integer precision: 'unsigned int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
-                buttonState = GPIOA->IDR & 1 << BUTTON_1_PIN;
-                            ~ ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
-main.c(14): warning: no previous extern declaration for non-static variable 'buttonState' [-Wmissing-variable-declarations]
-uint16_t buttonState;
-         ^
-main.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint16_t buttonState;
-^
-main.c(15): warning: no previous extern declaration for non-static variable 'debouncedButtonState' [-Wmissing-variable-declarations]
-uint8_t debouncedButtonState;
-        ^
-main.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t debouncedButtonState;
-^
-main.c(16): warning: no previous extern declaration for non-static variable 'isHandled' [-Wmissing-variable-declarations]
-uint32_t isHandled;
-         ^
-main.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t isHandled;
-^
-main.c(17): warning: no previous extern declaration for non-static variable 'counter' [-Wmissing-variable-declarations]
-uint32_t counter;
-         ^
+main.c(17): warning: no previous extern declaration for non-static variable 'clockTime' [-Wmissing-variable-declarations]
+struct time clockTime;
+            ^
 main.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32_t counter;
+struct time clockTime;
 ^
-24 warnings generated.
+main.c(18): warning: no previous extern declaration for non-static variable 'alarmTime' [-Wmissing-variable-declarations]
+struct time alarmTime;
+            ^
+main.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+struct time alarmTime;
+^
+19 warnings generated.
 compiling main.c...
 linking...
-Program Size: Code=2274 RO-data=286 RW-data=16 ZI-data=1664  
-".\Objects\STM32_alarm_clock.axf" - 0 Error(s), 24 Warning(s).
+Program Size: Code=4822 RO-data=286 RW-data=364 ZI-data=1904  
+".\Objects\STM32_alarm_clock.axf" - 0 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -209,11 +176,11 @@ Package Vendor: Keil
       Source file:   Boards/ST/NUCLEO-F103RB/Common/LED_NUCLEO_F103RB.c
 
    * Component: Keil::Device:Startup:1.0.0
-      Include file:  RTE_Driver/Config/RTE_Device.h
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/system_stm32f10x.c
-Build Time Elapsed:  00:00:00
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

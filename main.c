@@ -1,87 +1,129 @@
 #include "stm32f10x.h"
+#include "SSD1306.h"
+#include "GPIO.h"
+#include "I2C.h"
+#include "timers.h"
 
-#include "initialization.h"
-#include "buttons.h"
 
-uint8_t LED_PIN = 7;
-uint8_t BUTTON_1_PIN = 5;
-uint8_t BUTTON_2_PIN = 6;
-uint8_t BUTTON_3_PIN = 8;
-uint8_t BUTTON_4_PIN = 9;
+uint8_t highlightedNumber;
+uint8_t mode;
+uint32_t totalSeconds;
 
-uint32_t DEBOUNCE_LIMIT = 100;
+struct time{
+	uint8_t hours;
+	uint8_t minutes;	
+};
 
-uint16_t buttonState;
-uint8_t debouncedButtonState;
-uint32_t isHandled;
-uint32_t counter;
+struct time clockTime;
+struct time alarmTime;
+
+void SystemCoreClockConfigure(void) {
+
+	RCC->CR |= ((uint32_t)RCC_CR_HSION);                     // Enable HSI
+	while ((RCC->CR & RCC_CR_HSIRDY) == 0);                  // Wait for HSI Ready
+
+	RCC->CFGR = RCC_CFGR_SW_HSI;                             // HSI is system clock
+	while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_HSI);  // Wait for HSI used as system clock
+
+	RCC->CFGR |= RCC_CFGR_HPRE_DIV1;                         // HCLK = SYSCLK
+	RCC->CFGR |= RCC_CFGR_PPRE1_DIV1;                        // APB1 = HCLK 	(I2C bus)
+	RCC->CFGR |= RCC_CFGR_PPRE2_DIV1;                        // APB2 = HCLK		(GPIO bus)
+
+	RCC->CR &= ~RCC_CR_PLLON;                                // Disable PLL
+
+	//  PLL configuration:  = HSI/2 * 9 = 36 MHz
+	RCC->CFGR &= ~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLMULL);
+	RCC->CFGR |=  (RCC_CFGR_PLLSRC_HSI_Div2 | RCC_CFGR_PLLMULL9 );
+
+	RCC->CR |= RCC_CR_PLLON;                                 // Enable PLL
+	while((RCC->CR & RCC_CR_PLLRDY) == 0) __NOP();           // Wait till PLL is ready
+
+	RCC->CFGR &= ~RCC_CFGR_SW;                               // Select PLL as system clock source
+	RCC->CFGR |=  RCC_CFGR_SW_PLL;
+	while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL);  // Wait till PLL is system clock src
+}
+
+void updateScreen(){
+	OLED_WriteTime(clockTime.hours / 10,
+				   clockTime.hours % 10,
+				   clockTime.minutes / 10,
+				   clockTime.minutes % 10,
+				   mode,
+				   highlightedNumber);
+}
 
 /*----------------------------------------------------------------
- * SystemCoreClockConfigure(void) : void
- * Функция для настройки тактовой частоты микроконтроллера
+ * TIM3_IRQHandler(void) : void
+ * Обработчик прерываний таймера TIM3. (раз в секунду)
  *----------------------------------------------------------------*/
-void SystemCoreClockConfigure(void) {
-	// Включаем HSE
-	RCC->CR |= ((uint32_t)RCC_CR_HSEON);
-	// Ожидаем включения HSE
-	while ((RCC->CR & RCC_CR_HSERDY) == 0);
-
-	// Устанавилваем HSE в качестве источника такстирования
-	RCC->CFGR = RCC_CFGR_SW_HSE;
-	// Ожидаем завершения
-	while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_HSE);
-
-	// Настройка тактирования самого процессора и портов
-	RCC->CFGR |= RCC_CFGR_HPRE_DIV1;  // HCLK = SYSCLK
-	RCC->CFGR |= RCC_CFGR_PPRE1_DIV1; // APB1 = HCLK
-	RCC->CFGR |= RCC_CFGR_PPRE2_DIV1; // APB2 = HCLK
-}
-
-void SwitchPin (uint8_t pin_number) {
-	if(GPIOA->ODR & 1 << pin_number){
-		GPIOA->BSRR = 1 << pin_number + 16;
-	}
-	else{
-		GPIOA->BSRR = 1 << pin_number;
-	}
-}
-
 void TIM3_IRQHandler () {
 	// Сброс флага прерывания
 	TIM3->SR &= ~TIM_SR_UIF;
 	
-	
+//	totalSeconds++;
+//	if(totalSeconds == 86400){
+//		totalSeconds = 0;
+//	}
+//	clockTime.minutes = totalSeconds % 60;
+//	clockTime.hours = totalSeconds / 60;
+//	
+//	mode++;
+//	if(mode > 2){
+//		mode = 0;
+//	}
+//	
+//	highlightedNumber++;
+//	if(highlightedNumber > 4){
+//		highlightedNumber = 0;
+//	}
+//	
+//	updateScreen();
 }
 
+/*----------------------------------------------------------------
+ * TIM3_IRQHandler(void) : void
+ * Обработчик прерываний таймера TIM3. (раз в секунду)
+ *----------------------------------------------------------------*/
 void TIM4_IRQHandler () {
 	// Сброс флага прерывания
 	TIM4->SR &= ~TIM_SR_UIF;
+	
+	totalSeconds += 60;
+	if(totalSeconds == 86400){
+		totalSeconds = 0;
+	}
+	clockTime.minutes = totalSeconds / 60 % 60;
+	clockTime.hours = totalSeconds / 3600;
+	
+	mode++;
+	if(mode > 2){
+		mode = 0;
+	}
+	
+	highlightedNumber++;
+	if(highlightedNumber > 4){
+		highlightedNumber = 0;
+	}
+	
+	updateScreen();
 }
 
-
-int main (void) {
+int main (void) {	
 	SystemCoreClockConfigure();
 	SystemCoreClockUpdate();
 	
-	//SysTick_Config(SystemCoreClock / 1000000);
+	SysTick_Config(SystemCoreClock / 1000000); 
 	
+	totalSeconds = 86400 - 1200;
+	
+	GPIO_Init(1, 1, 1, 1, 1);
+	I2C_Init();	
+	OLED_Init();	
 	TIM3_Init();
 	TIM4_Init();
 	
-	GPIO_Init(LED_PIN, BUTTON_1_PIN, BUTTON_2_PIN, BUTTON_3_PIN, BUTTON_4_PIN);
+	OLED_WriteTime(1, 2, 3, 4, 2, 4);
 	
-	while(1){
-		buttonState = GPIOA->IDR & 1 << BUTTON_1_PIN;
-		debouncedButtonState = BUTTONS_DebounceHandler(buttonState, 0, DEBOUNCE_LIMIT);
-		if(debouncedButtonState){
-			if(isHandled == 0){
-				SwitchPin(LED_PIN);
-				isHandled = 1;
-				counter++;
-			}
-		}
-		else{
-			isHandled = 0;
-		}
+	while (1) {
 	}
 }
