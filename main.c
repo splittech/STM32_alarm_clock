@@ -5,17 +5,24 @@
 #include "timers.h"
 #include "buttons.h"
 
-
+// Настройки проекта
 uint8_t LED_PIN = 9;
-uint8_t BUTTON_1_PIN = 5;
-uint8_t BUTTON_2_PIN = 6;
-uint8_t BUTTON_3_PIN = 7;
-uint8_t BUTTON_4_PIN = 8;
+uint8_t MODE_BUTTON_PIN = 5;
+uint8_t HIGHLIGHT_BUTTON_PIN = 6;
+uint8_t INCREASE_NUMBER_BUTTON_PIN = 7;
+uint8_t STOP_ALARM_BUTTON_PIN = 8;
 
-uint8_t highlightedNumber;
+// Режим работы будильника
 uint8_t mode;
+// Подсвечиваемая цифра 
+uint8_t highlightedNumber;
+// Общий счетчик секунд в сутках
 uint32_t totalSeconds;
+// Флаг того, что будильник заведен
 uint8_t alarmSet;
+// Флаг того, что будильник заведен
+uint8_t screenChanged;
+// Флаг для подачи звукового 
 uint8_t buzzer;
 
 struct time{
@@ -83,28 +90,6 @@ void updateScreen(){
 	}
 }
 
-/*----------------------------------------------------------------
- * TIM3_IRQHandler(void) : void
- * Обработчик прерываний таймера TIM3. (раз в секунду)
- *----------------------------------------------------------------*/
-void TIM3_IRQHandler () {
-	// Сброс флага прерывания
-	TIM3->SR &= ~TIM_SR_UIF;
-	
-	if(mode == 0){
-		totalSeconds++;
-		if(totalSeconds == 86400){
-			totalSeconds = 0;
-		}
-		clockTime.hourTens = totalSeconds / 36000;
-		clockTime.hourUnits = totalSeconds / 3600 % 10;
-		clockTime.minuteTens = totalSeconds / 600 % 6;
-		clockTime.minuteUnits = totalSeconds / 60 % 10;
-		
-		updateScreen();
-	}
-}
-
 void switchPin(uint8_t pinNumber){
 	if(GPIOA->ODR & (1 << pinNumber)){
 		GPIOA->BSRR = 1 << pinNumber + 16;
@@ -118,11 +103,38 @@ void switchPin(uint8_t pinNumber){
  * TIM3_IRQHandler(void) : void
  * Обработчик прерываний таймера TIM3. (раз в секунду)
  *----------------------------------------------------------------*/
+void TIM3_IRQHandler () {
+	// Сброс флага прерывания
+	TIM3->SR &= ~TIM_SR_UIF;
+	
+	// Если в режиме штатной работы
+	if(mode == 0){
+		// Увеличиваем общий счетчик секунд
+		totalSeconds++;
+		// Сбрасываем, если переполнилось количество секунд в сутках
+		if(totalSeconds == 86400){
+			totalSeconds = 0;
+		}
+		// Записываем в таймер в структуру
+		clockTime.hourTens = totalSeconds / 36000;
+		clockTime.hourUnits = totalSeconds / 3600 % 10;
+		clockTime.minuteTens = totalSeconds / 600 % 6;
+		clockTime.minuteUnits = totalSeconds / 60 % 10;
+		// Устанавливаем флаг обновления экрана
+		screenChanged = 1;
+	}
+}
+
+/*----------------------------------------------------------------
+ * TIM3_IRQHandler(void) : void
+ * Обработчик прерываний таймера TIM3. (раз в секунду)
+ *----------------------------------------------------------------*/
 void TIM4_IRQHandler () {
 	// Сброс флага прерывания
 	TIM4->SR &= ~TIM_SR_UIF;
-	
-	if(buzzer){
+	// Если нужно издавать сигнал
+	if(buzzer || GPIOA->ODR & (1 << LED_PIN)){
+		// Инверсия сигнала на пине
 		switchPin(LED_PIN);
 	}
 }
@@ -200,30 +212,40 @@ void addTime(uint8_t timeType, uint8_t number){
 }
 
 
-int main (void) {	
+
+int main (void) {
+	// Настройка тактовой частоты
 	SystemCoreClockConfigure();
 	SystemCoreClockUpdate();
 	
+	
 	SysTick_Config(SystemCoreClock / 1000000); 
 	
+	// Первичная настройка кнопки смены режима
 	modeButton.number = 0;
-	modeButton.pin = BUTTON_1_PIN;
+	modeButton.pin = MODE_BUTTON_PIN;
+	// Первичная настройка кнопки для изменеия выделенной цифры
 	highlightButton.number = 1;
-	highlightButton.pin = BUTTON_2_PIN;
+	highlightButton.pin = HIGHLIGHT_BUTTON_PIN;
+	// Первичная настройка кнопки увеличения выделенной цифры
 	incNumberButton.number = 2;
-	incNumberButton.pin = BUTTON_3_PIN;
+	incNumberButton.pin = INCREASE_NUMBER_BUTTON_PIN;
+	// Первичная настройка кнопки для остановки будильника
 	stopAlarmButton.number = 3;
-	stopAlarmButton.pin = BUTTON_4_PIN;
-	
-	GPIO_Init(LED_PIN, BUTTON_1_PIN, BUTTON_2_PIN, BUTTON_3_PIN, BUTTON_4_PIN);
-	I2C_Init();	
-	OLED_Init();	
+	stopAlarmButton.pin = STOP_ALARM_BUTTON_PIN;
+	// Инициализация портов ввода-вывода 
+	GPIO_Init(LED_PIN, modeButton.pin, highlightButton.pin, incNumberButton.pin, stopAlarmButton.pin);
+	// Инициализация интерфейса I2C
+	I2C_Init();
+	// Инициализация дисплея
+	OLED_Init();
+	updateScreen();
+	//switchPin(LED_PIN);
+	// Инициализация таймеров общего назначения
 	TIM3_Init();
 	TIM4_Init();
-	switchPin(LED_PIN);
-	
 	while (1) {
-		// Кнопка для изменения режима часов
+		// Обработка кнопки для изменения режима часов
 		modeButton.state = GPIOA->IDR & (1 << modeButton.pin);
 		if(modeButton.state == 0){
 			if(modeButton.handled == 0){
@@ -237,7 +259,7 @@ int main (void) {
 				else{
 					highlightedNumber = 0;
 				}
-				updateScreen();
+				screenChanged = 1;
 				modeButton.handled = 1;
 			}
 		}
@@ -246,11 +268,12 @@ int main (void) {
 		}
 		// Если в режиме штатной работы часов
 		if(mode == 0){
-			// Кнопка для изменения подсвечиваемой цифры
+			// Кнопка для остановки будильника
 			stopAlarmButton.state = GPIOA->IDR & (1 << stopAlarmButton.pin);
 			if(stopAlarmButton.state == 0){
 				if(stopAlarmButton.handled == 0){
 					buzzer = 0;
+					alarmSet = 0;
 					stopAlarmButton.handled = 1;
 				}
 			}
@@ -266,6 +289,9 @@ int main (void) {
 		}
 		// Если не в режиме штатной работы часов
 		else{
+			if(mode == 2){
+				alarmSet = 1;
+			}
 			// Кнопка для изменения подсвечиваемой цифры
 			highlightButton.state = GPIOA->IDR & (1 << highlightButton.pin);
 			if(highlightButton.state == 0){
@@ -274,7 +300,7 @@ int main (void) {
 					if(highlightedNumber > 4){
 						highlightedNumber = 1;
 					}
-					updateScreen();
+					screenChanged = 1;
 					highlightButton.handled = 1;
 				}
 			}
@@ -286,13 +312,17 @@ int main (void) {
 			if(incNumberButton.state == 0){
 				if(incNumberButton.handled == 0){
 					addTime(mode, highlightedNumber);
-					updateScreen();
+					screenChanged = 1;
 					incNumberButton.handled = 1;
 				}
 			}
 			else{
 				incNumberButton.handled = 0;
 			}
+		}
+		if(screenChanged){
+			updateScreen();
+			screenChanged = 0;
 		}
 	}
 }

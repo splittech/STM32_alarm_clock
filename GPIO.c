@@ -76,11 +76,4 @@ void GPIO_Init (uint8_t ledPin, uint8_t button1Pin, uint8_t button2Pin, uint8_t 
 	GPIO_EnablePinInput(button2Pin);
 	GPIO_EnablePinInput(button3Pin);
 	GPIO_EnablePinInput(button4Pin);
-	
-	
-	GPIOA->CRL   &= ~((15ul << 4*5));
-	GPIOA->CRL   |=  (( 1ul << 4*5));
-
-	GPIOA->CRH   &= ~15ul;
-	GPIOA->CRH   |=  1ul ;
 }
