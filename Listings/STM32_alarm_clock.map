@@ -5,13 +5,13 @@ Component: Arm Compiler for Embedded 6.18 Tool: armlink [5e4cc100]
 Section Cross References
 
     main.o(.ARM.exidx.text.SystemCoreClockConfigure) refers to main.o(.text.SystemCoreClockConfigure) for [Anonymous Symbol]
-    main.o(.text.updateScreen) refers to main.o(.bss.mode) for mode
-    main.o(.text.updateScreen) refers to main.o(.bss.alarmTime) for alarmTime
-    main.o(.text.updateScreen) refers to main.o(.bss.highlightedNumber) for highlightedNumber
-    main.o(.text.updateScreen) refers to ssd1306.o(.text.OLED_WriteTime) for OLED_WriteTime
-    main.o(.text.updateScreen) refers to main.o(.bss.clockTime) for clockTime
-    main.o(.ARM.exidx.text.updateScreen) refers to main.o(.text.updateScreen) for [Anonymous Symbol]
-    main.o(.ARM.exidx.text.switchPin) refers to main.o(.text.switchPin) for [Anonymous Symbol]
+    main.o(.text.UpdateScreen) refers to main.o(.bss.mode) for mode
+    main.o(.text.UpdateScreen) refers to main.o(.bss.alarmTime) for alarmTime
+    main.o(.text.UpdateScreen) refers to main.o(.bss.highlightedNumber) for highlightedNumber
+    main.o(.text.UpdateScreen) refers to ssd1306.o(.text.OLED_WriteTime) for OLED_WriteTime
+    main.o(.text.UpdateScreen) refers to main.o(.bss.clockTime) for clockTime
+    main.o(.ARM.exidx.text.UpdateScreen) refers to main.o(.text.UpdateScreen) for [Anonymous Symbol]
+    main.o(.ARM.exidx.text.SwitchPin) refers to main.o(.text.SwitchPin) for [Anonymous Symbol]
     main.o(.text.TIM3_IRQHandler) refers to main.o(.bss.mode) for mode
     main.o(.text.TIM3_IRQHandler) refers to main.o(.bss.totalSeconds) for totalSeconds
     main.o(.text.TIM3_IRQHandler) refers to main.o(.bss.clockTime) for clockTime
@@ -19,12 +19,12 @@ Section Cross References
     main.o(.ARM.exidx.text.TIM3_IRQHandler) refers to main.o(.text.TIM3_IRQHandler) for [Anonymous Symbol]
     main.o(.text.TIM4_IRQHandler) refers to main.o(.bss.buzzer) for buzzer
     main.o(.text.TIM4_IRQHandler) refers to main.o(.data.LED_PIN) for LED_PIN
-    main.o(.text.TIM4_IRQHandler) refers to main.o(.text.switchPin) for switchPin
+    main.o(.text.TIM4_IRQHandler) refers to main.o(.text.SwitchPin) for SwitchPin
     main.o(.ARM.exidx.text.TIM4_IRQHandler) refers to main.o(.text.TIM4_IRQHandler) for [Anonymous Symbol]
-    main.o(.text.addTime) refers to main.o(.bss.clockTime) for clockTime
-    main.o(.text.addTime) refers to main.o(.bss.totalSeconds) for totalSeconds
-    main.o(.text.addTime) refers to main.o(.bss.alarmTime) for alarmTime
-    main.o(.ARM.exidx.text.addTime) refers to main.o(.text.addTime) for [Anonymous Symbol]
+    main.o(.text.AddTime) refers to main.o(.bss.clockTime) for clockTime
+    main.o(.text.AddTime) refers to main.o(.bss.totalSeconds) for totalSeconds
+    main.o(.text.AddTime) refers to main.o(.bss.alarmTime) for alarmTime
+    main.o(.ARM.exidx.text.AddTime) refers to main.o(.text.AddTime) for [Anonymous Symbol]
     main.o(.text.main) refers to main.o(.text.SystemCoreClockConfigure) for SystemCoreClockConfigure
     main.o(.text.main) refers to system_stm32f10x.o(.text.SystemCoreClockUpdate) for SystemCoreClockUpdate
     main.o(.text.main) refers to system_stm32f10x.o(.data.SystemCoreClock) for SystemCoreClock
@@ -41,9 +41,11 @@ Section Cross References
     main.o(.text.main) refers to gpio.o(.text.GPIO_Init) for GPIO_Init
     main.o(.text.main) refers to i2c.o(.text.I2C_Init) for I2C_Init
     main.o(.text.main) refers to ssd1306.o(.text.OLED_Init) for OLED_Init
-    main.o(.text.main) refers to main.o(.text.updateScreen) for updateScreen
+    main.o(.text.main) refers to main.o(.text.UpdateScreen) for UpdateScreen
     main.o(.text.main) refers to timers.o(.text.TIM3_Init) for TIM3_Init
     main.o(.text.main) refers to timers.o(.text.TIM4_Init) for TIM4_Init
+    main.o(.text.main) refers to main.o(.data.BUTTON_DEBOUNCE_LIMIT) for BUTTON_DEBOUNCE_LIMIT
+    main.o(.text.main) refers to buttons.o(.text.BUTTONS_DebounceHandler) for BUTTONS_DebounceHandler
     main.o(.text.main) refers to main.o(.bss.mode) for mode
     main.o(.text.main) refers to main.o(.bss.highlightedNumber) for highlightedNumber
     main.o(.text.main) refers to main.o(.bss.screenChanged) for screenChanged
@@ -51,12 +53,13 @@ Section Cross References
     main.o(.text.main) refers to main.o(.bss.alarmSet) for alarmSet
     main.o(.text.main) refers to main.o(.bss.clockTime) for clockTime
     main.o(.text.main) refers to main.o(.bss.alarmTime) for alarmTime
-    main.o(.text.main) refers to main.o(.text.addTime) for addTime
+    main.o(.text.main) refers to main.o(.text.AddTime) for AddTime
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     main.o(.text.SysTick_Config) refers to main.o(.text.__NVIC_SetPriority) for __NVIC_SetPriority
     main.o(.ARM.exidx.text.SysTick_Config) refers to main.o(.text.SysTick_Config) for [Anonymous Symbol]
     main.o(.ARM.exidx.text.__NVIC_SetPriority) refers to main.o(.text.__NVIC_SetPriority) for [Anonymous Symbol]
-    buttons.o(.text.BUTTONS_DebounceHandler) refers to buttons.o(.bss.buttonCount) for buttonCount
+    buttons.o(.text.BUTTONS_DebounceHandler) refers to buttons.o(.bss.buttonCounts) for buttonCounts
+    buttons.o(.text.BUTTONS_DebounceHandler) refers to buttons.o(.bss.buttonStates) for buttonStates
     buttons.o(.ARM.exidx.text.BUTTONS_DebounceHandler) refers to buttons.o(.text.BUTTONS_DebounceHandler) for [Anonymous Symbol]
     gpio.o(.ARM.exidx.text.GPIO_EnablePinInput) refers to gpio.o(.text.GPIO_EnablePinInput) for [Anonymous Symbol]
     gpio.o(.ARM.exidx.text.GPIO_EnablePinOutput) refers to gpio.o(.text.GPIO_EnablePinOutput) for [Anonymous Symbol]
@@ -245,19 +248,17 @@ Removing Unused input sections from the image.
 
     Removing main.o(.text), (0 bytes).
     Removing main.o(.ARM.exidx.text.SystemCoreClockConfigure), (8 bytes).
-    Removing main.o(.ARM.exidx.text.updateScreen), (8 bytes).
-    Removing main.o(.ARM.exidx.text.switchPin), (8 bytes).
+    Removing main.o(.ARM.exidx.text.UpdateScreen), (8 bytes).
+    Removing main.o(.ARM.exidx.text.SwitchPin), (8 bytes).
     Removing main.o(.ARM.exidx.text.TIM3_IRQHandler), (8 bytes).
     Removing main.o(.ARM.exidx.text.TIM4_IRQHandler), (8 bytes).
-    Removing main.o(.ARM.exidx.text.addTime), (8 bytes).
+    Removing main.o(.ARM.exidx.text.AddTime), (8 bytes).
     Removing main.o(.ARM.exidx.text.main), (8 bytes).
     Removing main.o(.ARM.exidx.text.SysTick_Config), (8 bytes).
     Removing main.o(.ARM.exidx.text.__NVIC_SetPriority), (8 bytes).
     Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing buttons.o(.text), (0 bytes).
-    Removing buttons.o(.text.BUTTONS_DebounceHandler), (172 bytes).
     Removing buttons.o(.ARM.exidx.text.BUTTONS_DebounceHandler), (8 bytes).
-    Removing buttons.o(.bss.buttonCount), (16 bytes).
     Removing gpio.o(.text), (0 bytes).
     Removing gpio.o(.ARM.exidx.text.GPIO_EnablePinInput), (8 bytes).
     Removing gpio.o(.ARM.exidx.text.GPIO_EnablePinOutput), (8 bytes).
@@ -309,7 +310,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f10x.o(.ARM.exidx.text.SystemCoreClockUpdate), (8 bytes).
     Removing system_stm32f10x.o(.ARM.exidx.text.SetSysClockTo72), (8 bytes).
 
-65 unused section(s) (total 874 bytes) removed from the image.
+63 unused section(s) (total 686 bytes) removed from the image.
 
 ==============================================================================
 
@@ -438,46 +439,47 @@ Image Symbol Table
     .text                                    0x08000274   Section        0  sys_exit.o(.text)
     .text                                    0x08000280   Section        2  use_no_semi.o(.text)
     .text                                    0x08000282   Section        0  indicate_semi.o(.text)
-    [Anonymous Symbol]                       0x08000284   Section        0  delay.o(.text.DelayMicro)
-    [Anonymous Symbol]                       0x080002b4   Section        0  gpio.o(.text.GPIO_EnablePinInput)
-    [Anonymous Symbol]                       0x08000338   Section        0  gpio.o(.text.GPIO_EnablePinOutput)
-    [Anonymous Symbol]                       0x080003b8   Section        0  gpio.o(.text.GPIO_Init)
-    [Anonymous Symbol]                       0x08000418   Section        0  i2c.o(.text.I2C_Init)
-    [Anonymous Symbol]                       0x080004e8   Section        0  ssd1306.o(.text.OLED_Clear)
-    [Anonymous Symbol]                       0x080005b8   Section        0  ssd1306.o(.text.OLED_Init)
-    [Anonymous Symbol]                       0x0800063c   Section        0  ssd1306.o(.text.OLED_Reset)
-    [Anonymous Symbol]                       0x080006a8   Section        0  ssd1306.o(.text.OLED_SendByte)
-    [Anonymous Symbol]                       0x0800078c   Section        0  ssd1306.o(.text.OLED_UpdateScreen)
-    [Anonymous Symbol]                       0x080009cc   Section        0  ssd1306.o(.text.OLED_WriteInTimePanel)
-    [Anonymous Symbol]                       0x08000a4c   Section        0  ssd1306.o(.text.OLED_WriteTime)
-    SetSysClock                              0x08000c99   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
-    [Anonymous Symbol]                       0x08000c98   Section        0  system_stm32f10x.o(.text.SetSysClock)
-    SetSysClockTo72                          0x08000ca1   Thumb Code   290  system_stm32f10x.o(.text.SetSysClockTo72)
-    [Anonymous Symbol]                       0x08000ca0   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
-    SysTick_Config                           0x08000dc5   Thumb Code    82  main.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x08000dc4   Section        0  main.o(.text.SysTick_Config)
-    [Anonymous Symbol]                       0x08000e18   Section        0  delay.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x08000e28   Section        0  main.o(.text.SystemCoreClockConfigure)
-    [Anonymous Symbol]                       0x08000efc   Section        0  system_stm32f10x.o(.text.SystemCoreClockUpdate)
-    [Anonymous Symbol]                       0x08001020   Section        0  system_stm32f10x.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x08001088   Section        0  main.o(.text.TIM3_IRQHandler)
-    [Anonymous Symbol]                       0x0800117c   Section        0  timers.o(.text.TIM3_Init)
-    [Anonymous Symbol]                       0x080011e8   Section        0  main.o(.text.TIM4_IRQHandler)
-    [Anonymous Symbol]                       0x08001238   Section        0  timers.o(.text.TIM4_Init)
-    __NVIC_EnableIRQ                         0x080012a9   Thumb Code    48  timers.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x080012a8   Section        0  timers.o(.text.__NVIC_EnableIRQ)
-    __NVIC_SetPriority                       0x080012d9   Thumb Code    66  main.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x080012d8   Section        0  main.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x0800131c   Section        0  main.o(.text.addTime)
-    [Anonymous Symbol]                       0x0800158c   Section        0  main.o(.text.main)
-    [Anonymous Symbol]                       0x08001930   Section        0  main.o(.text.switchPin)
-    [Anonymous Symbol]                       0x0800197c   Section        0  main.o(.text.updateScreen)
-    .bss                                     0x20000170   Section       96  libspace.o(.bss)
-    Heap_Mem                                 0x20000300   Data         512  startup_stm32f10x_md.o(HEAP)
-    HEAP                                     0x20000300   Section      512  startup_stm32f10x_md.o(HEAP)
-    Stack_Mem                                0x20000500   Data        1024  startup_stm32f10x_md.o(STACK)
-    STACK                                    0x20000500   Section     1024  startup_stm32f10x_md.o(STACK)
-    __initial_sp                             0x20000900   Data           0  startup_stm32f10x_md.o(STACK)
+    [Anonymous Symbol]                       0x08000284   Section        0  main.o(.text.AddTime)
+    [Anonymous Symbol]                       0x08000528   Section        0  buttons.o(.text.BUTTONS_DebounceHandler)
+    [Anonymous Symbol]                       0x080005d4   Section        0  delay.o(.text.DelayMicro)
+    [Anonymous Symbol]                       0x08000604   Section        0  gpio.o(.text.GPIO_EnablePinInput)
+    [Anonymous Symbol]                       0x08000688   Section        0  gpio.o(.text.GPIO_EnablePinOutput)
+    [Anonymous Symbol]                       0x08000708   Section        0  gpio.o(.text.GPIO_Init)
+    [Anonymous Symbol]                       0x08000768   Section        0  i2c.o(.text.I2C_Init)
+    [Anonymous Symbol]                       0x08000838   Section        0  ssd1306.o(.text.OLED_Clear)
+    [Anonymous Symbol]                       0x08000908   Section        0  ssd1306.o(.text.OLED_Init)
+    [Anonymous Symbol]                       0x0800098c   Section        0  ssd1306.o(.text.OLED_Reset)
+    [Anonymous Symbol]                       0x080009f8   Section        0  ssd1306.o(.text.OLED_SendByte)
+    [Anonymous Symbol]                       0x08000adc   Section        0  ssd1306.o(.text.OLED_UpdateScreen)
+    [Anonymous Symbol]                       0x08000d1c   Section        0  ssd1306.o(.text.OLED_WriteInTimePanel)
+    [Anonymous Symbol]                       0x08000d9c   Section        0  ssd1306.o(.text.OLED_WriteTime)
+    SetSysClock                              0x08000fe9   Thumb Code     8  system_stm32f10x.o(.text.SetSysClock)
+    [Anonymous Symbol]                       0x08000fe8   Section        0  system_stm32f10x.o(.text.SetSysClock)
+    SetSysClockTo72                          0x08000ff1   Thumb Code   290  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x08000ff0   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
+    [Anonymous Symbol]                       0x08001114   Section        0  main.o(.text.SwitchPin)
+    SysTick_Config                           0x08001161   Thumb Code    82  main.o(.text.SysTick_Config)
+    [Anonymous Symbol]                       0x08001160   Section        0  main.o(.text.SysTick_Config)
+    [Anonymous Symbol]                       0x080011b4   Section        0  delay.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x080011c4   Section        0  main.o(.text.SystemCoreClockConfigure)
+    [Anonymous Symbol]                       0x08001298   Section        0  system_stm32f10x.o(.text.SystemCoreClockUpdate)
+    [Anonymous Symbol]                       0x080013bc   Section        0  system_stm32f10x.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x08001424   Section        0  main.o(.text.TIM3_IRQHandler)
+    [Anonymous Symbol]                       0x08001518   Section        0  timers.o(.text.TIM3_Init)
+    [Anonymous Symbol]                       0x08001584   Section        0  main.o(.text.TIM4_IRQHandler)
+    [Anonymous Symbol]                       0x080015d4   Section        0  timers.o(.text.TIM4_Init)
+    [Anonymous Symbol]                       0x08001644   Section        0  main.o(.text.UpdateScreen)
+    __NVIC_EnableIRQ                         0x080016cd   Thumb Code    48  timers.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x080016cc   Section        0  timers.o(.text.__NVIC_EnableIRQ)
+    __NVIC_SetPriority                       0x080016fd   Thumb Code    66  main.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x080016fc   Section        0  main.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x08001740   Section        0  main.o(.text.main)
+    .bss                                     0x20000178   Section       96  libspace.o(.bss)
+    Heap_Mem                                 0x20000320   Data         512  startup_stm32f10x_md.o(HEAP)
+    HEAP                                     0x20000320   Section      512  startup_stm32f10x_md.o(HEAP)
+    Stack_Mem                                0x20000520   Data        1024  startup_stm32f10x_md.o(STACK)
+    STACK                                    0x20000520   Section     1024  startup_stm32f10x_md.o(STACK)
+    __initial_sp                             0x20000920   Data           0  startup_stm32f10x_md.o(STACK)
 
     Global Symbols
 
@@ -630,60 +632,64 @@ Image Symbol Table
     __I$use$semihosting                      0x08000281   Thumb Code     0  use_no_semi.o(.text)
     __use_no_semihosting_swi                 0x08000281   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x08000283   Thumb Code     0  indicate_semi.o(.text)
-    DelayMicro                               0x08000285   Thumb Code    48  delay.o(.text.DelayMicro)
-    GPIO_EnablePinInput                      0x080002b5   Thumb Code   130  gpio.o(.text.GPIO_EnablePinInput)
-    GPIO_EnablePinOutput                     0x08000339   Thumb Code   126  gpio.o(.text.GPIO_EnablePinOutput)
-    GPIO_Init                                0x080003b9   Thumb Code    96  gpio.o(.text.GPIO_Init)
-    I2C_Init                                 0x08000419   Thumb Code   206  i2c.o(.text.I2C_Init)
-    OLED_Clear                               0x080004e9   Thumb Code   206  ssd1306.o(.text.OLED_Clear)
-    OLED_Init                                0x080005b9   Thumb Code   132  ssd1306.o(.text.OLED_Init)
-    OLED_Reset                               0x0800063d   Thumb Code   106  ssd1306.o(.text.OLED_Reset)
-    OLED_SendByte                            0x080006a9   Thumb Code   228  ssd1306.o(.text.OLED_SendByte)
-    OLED_UpdateScreen                        0x0800078d   Thumb Code   576  ssd1306.o(.text.OLED_UpdateScreen)
-    OLED_WriteInTimePanel                    0x080009cd   Thumb Code   128  ssd1306.o(.text.OLED_WriteInTimePanel)
-    OLED_WriteTime                           0x08000a4d   Thumb Code   586  ssd1306.o(.text.OLED_WriteTime)
-    SysTick_Handler                          0x08000e19   Thumb Code    16  delay.o(.text.SysTick_Handler)
-    SystemCoreClockConfigure                 0x08000e29   Thumb Code   212  main.o(.text.SystemCoreClockConfigure)
-    SystemCoreClockUpdate                    0x08000efd   Thumb Code   290  system_stm32f10x.o(.text.SystemCoreClockUpdate)
-    SystemInit                               0x08001021   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
-    TIM3_IRQHandler                          0x08001089   Thumb Code   244  main.o(.text.TIM3_IRQHandler)
-    TIM3_Init                                0x0800117d   Thumb Code   108  timers.o(.text.TIM3_Init)
-    TIM4_IRQHandler                          0x080011e9   Thumb Code    78  main.o(.text.TIM4_IRQHandler)
-    TIM4_Init                                0x08001239   Thumb Code   110  timers.o(.text.TIM4_Init)
-    addTime                                  0x0800131d   Thumb Code   624  main.o(.text.addTime)
-    main                                     0x0800158d   Thumb Code   930  main.o(.text.main)
-    switchPin                                0x08001931   Thumb Code    76  main.o(.text.switchPin)
-    updateScreen                             0x0800197d   Thumb Code   136  main.o(.text.updateScreen)
-    AHBPrescTable                            0x08001a04   Data          16  system_stm32f10x.o(.rodata.AHBPrescTable)
-    Region$$Table$$Base                      0x08001a14   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001a34   Number         0  anon$$obj.o(Region$$Table)
-    HIGHLIGHT_BUTTON_PIN                     0x20000000   Data           1  main.o(.data.HIGHLIGHT_BUTTON_PIN)
-    INCREASE_NUMBER_BUTTON_PIN               0x20000001   Data           1  main.o(.data.INCREASE_NUMBER_BUTTON_PIN)
-    LED_PIN                                  0x20000002   Data           1  main.o(.data.LED_PIN)
-    MODE_BUTTON_PIN                          0x20000003   Data           1  main.o(.data.MODE_BUTTON_PIN)
-    NUMBERS                                  0x20000004   Data         150  ssd1306.o(.data.NUMBERS)
-    SET_ALARM_MESSAGE                        0x2000009a   Data          65  ssd1306.o(.data.SET_ALARM_MESSAGE)
-    SET_TIME_MESSAGE                         0x200000db   Data          63  ssd1306.o(.data.SET_TIME_MESSAGE)
-    STOP_ALARM_BUTTON_PIN                    0x2000011a   Data           1  main.o(.data.STOP_ALARM_BUTTON_PIN)
-    SystemCoreClock                          0x2000011c   Data           4  system_stm32f10x.o(.data.SystemCoreClock)
-    timePanel                                0x20000120   Data          80  ssd1306.o(.data.timePanel)
-    __libspace_start                         0x20000170   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200001d0   Data           0  libspace.o(.bss)
-    alarmSet                                 0x200001d0   Data           1  main.o(.bss.alarmSet)
-    alarmTime                                0x200001d1   Data           4  main.o(.bss.alarmTime)
-    buzzer                                   0x200001d5   Data           1  main.o(.bss.buzzer)
-    clockTime                                0x200001d6   Data           4  main.o(.bss.clockTime)
-    highlightButton                          0x200001da   Data           6  main.o(.bss.highlightButton)
-    highlightPanel                           0x200001e0   Data         128  ssd1306.o(.bss.highlightPanel)
-    highlightedNumber                        0x20000260   Data           1  main.o(.bss.highlightedNumber)
-    incNumberButton                          0x20000262   Data           6  main.o(.bss.incNumberButton)
-    mode                                     0x20000268   Data           1  main.o(.bss.mode)
-    modeButton                               0x2000026a   Data           6  main.o(.bss.modeButton)
-    modePanel                                0x20000270   Data         128  ssd1306.o(.bss.modePanel)
-    msTicks                                  0x200002f0   Data           4  delay.o(.bss.msTicks)
-    screenChanged                            0x200002f4   Data           1  main.o(.bss.screenChanged)
-    stopAlarmButton                          0x200002f6   Data           6  main.o(.bss.stopAlarmButton)
-    totalSeconds                             0x200002fc   Data           4  main.o(.bss.totalSeconds)
+    AddTime                                  0x08000285   Thumb Code   676  main.o(.text.AddTime)
+    BUTTONS_DebounceHandler                  0x08000529   Thumb Code   170  buttons.o(.text.BUTTONS_DebounceHandler)
+    DelayMicro                               0x080005d5   Thumb Code    48  delay.o(.text.DelayMicro)
+    GPIO_EnablePinInput                      0x08000605   Thumb Code   130  gpio.o(.text.GPIO_EnablePinInput)
+    GPIO_EnablePinOutput                     0x08000689   Thumb Code   126  gpio.o(.text.GPIO_EnablePinOutput)
+    GPIO_Init                                0x08000709   Thumb Code    96  gpio.o(.text.GPIO_Init)
+    I2C_Init                                 0x08000769   Thumb Code   206  i2c.o(.text.I2C_Init)
+    OLED_Clear                               0x08000839   Thumb Code   206  ssd1306.o(.text.OLED_Clear)
+    OLED_Init                                0x08000909   Thumb Code   132  ssd1306.o(.text.OLED_Init)
+    OLED_Reset                               0x0800098d   Thumb Code   106  ssd1306.o(.text.OLED_Reset)
+    OLED_SendByte                            0x080009f9   Thumb Code   228  ssd1306.o(.text.OLED_SendByte)
+    OLED_UpdateScreen                        0x08000add   Thumb Code   576  ssd1306.o(.text.OLED_UpdateScreen)
+    OLED_WriteInTimePanel                    0x08000d1d   Thumb Code   128  ssd1306.o(.text.OLED_WriteInTimePanel)
+    OLED_WriteTime                           0x08000d9d   Thumb Code   586  ssd1306.o(.text.OLED_WriteTime)
+    SwitchPin                                0x08001115   Thumb Code    76  main.o(.text.SwitchPin)
+    SysTick_Handler                          0x080011b5   Thumb Code    16  delay.o(.text.SysTick_Handler)
+    SystemCoreClockConfigure                 0x080011c5   Thumb Code   212  main.o(.text.SystemCoreClockConfigure)
+    SystemCoreClockUpdate                    0x08001299   Thumb Code   290  system_stm32f10x.o(.text.SystemCoreClockUpdate)
+    SystemInit                               0x080013bd   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
+    TIM3_IRQHandler                          0x08001425   Thumb Code   244  main.o(.text.TIM3_IRQHandler)
+    TIM3_Init                                0x08001519   Thumb Code   108  timers.o(.text.TIM3_Init)
+    TIM4_IRQHandler                          0x08001585   Thumb Code    78  main.o(.text.TIM4_IRQHandler)
+    TIM4_Init                                0x080015d5   Thumb Code   110  timers.o(.text.TIM4_Init)
+    UpdateScreen                             0x08001645   Thumb Code   136  main.o(.text.UpdateScreen)
+    main                                     0x08001741   Thumb Code   978  main.o(.text.main)
+    AHBPrescTable                            0x08001b12   Data          16  system_stm32f10x.o(.rodata.AHBPrescTable)
+    Region$$Table$$Base                      0x08001b24   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001b44   Number         0  anon$$obj.o(Region$$Table)
+    BUTTON_DEBOUNCE_LIMIT                    0x20000000   Data           4  main.o(.data.BUTTON_DEBOUNCE_LIMIT)
+    HIGHLIGHT_BUTTON_PIN                     0x20000004   Data           1  main.o(.data.HIGHLIGHT_BUTTON_PIN)
+    INCREASE_NUMBER_BUTTON_PIN               0x20000005   Data           1  main.o(.data.INCREASE_NUMBER_BUTTON_PIN)
+    LED_PIN                                  0x20000006   Data           1  main.o(.data.LED_PIN)
+    MODE_BUTTON_PIN                          0x20000007   Data           1  main.o(.data.MODE_BUTTON_PIN)
+    NUMBERS                                  0x20000008   Data         150  ssd1306.o(.data.NUMBERS)
+    SET_ALARM_MESSAGE                        0x2000009e   Data          65  ssd1306.o(.data.SET_ALARM_MESSAGE)
+    SET_TIME_MESSAGE                         0x200000df   Data          63  ssd1306.o(.data.SET_TIME_MESSAGE)
+    STOP_ALARM_BUTTON_PIN                    0x2000011e   Data           1  main.o(.data.STOP_ALARM_BUTTON_PIN)
+    SystemCoreClock                          0x20000120   Data           4  system_stm32f10x.o(.data.SystemCoreClock)
+    timePanel                                0x20000124   Data          80  ssd1306.o(.data.timePanel)
+    __libspace_start                         0x20000178   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x200001d8   Data           0  libspace.o(.bss)
+    alarmSet                                 0x200001d8   Data           1  main.o(.bss.alarmSet)
+    alarmTime                                0x200001d9   Data           4  main.o(.bss.alarmTime)
+    buttonCounts                             0x200001e0   Data          16  buttons.o(.bss.buttonCounts)
+    buttonStates                             0x200001f0   Data           4  buttons.o(.bss.buttonStates)
+    buzzer                                   0x200001f4   Data           1  main.o(.bss.buzzer)
+    clockTime                                0x200001f5   Data           4  main.o(.bss.clockTime)
+    highlightButton                          0x200001fa   Data           6  main.o(.bss.highlightButton)
+    highlightPanel                           0x20000200   Data         128  ssd1306.o(.bss.highlightPanel)
+    highlightedNumber                        0x20000280   Data           1  main.o(.bss.highlightedNumber)
+    incNumberButton                          0x20000282   Data           6  main.o(.bss.incNumberButton)
+    mode                                     0x20000288   Data           1  main.o(.bss.mode)
+    modeButton                               0x2000028a   Data           6  main.o(.bss.modeButton)
+    modePanel                                0x20000290   Data         128  ssd1306.o(.bss.modePanel)
+    msTicks                                  0x20000310   Data           4  delay.o(.bss.msTicks)
+    screenChanged                            0x20000314   Data           1  main.o(.bss.screenChanged)
+    stopAlarmButton                          0x20000316   Data           6  main.o(.bss.stopAlarmButton)
+    totalSeconds                             0x2000031c   Data           4  main.o(.bss.totalSeconds)
 
 
 
@@ -693,160 +699,167 @@ Memory Map of the image
 
   Image Entry point : 0x080001c9
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00001ba4, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00001ab0])
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00001cb8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00001bc4])
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001a34, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001b44, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x000000ec   Data   RO          164    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x080000ec   0x00000008   Code   RO          192  * !!!main             c_w.l(__main.o)
-    0x080000f4   0x080000f4   0x00000034   Code   RO          359    !!!scatter          c_w.l(__scatter.o)
-    0x08000128   0x08000128   0x0000005a   Code   RO          357    !!dczerorl2         c_w.l(__dczerorl2.o)
+    0x08000000   0x08000000   0x000000ec   Data   RO          166    RESET               startup_stm32f10x_md.o
+    0x080000ec   0x080000ec   0x00000008   Code   RO          194  * !!!main             c_w.l(__main.o)
+    0x080000f4   0x080000f4   0x00000034   Code   RO          361    !!!scatter          c_w.l(__scatter.o)
+    0x08000128   0x08000128   0x0000005a   Code   RO          359    !!dczerorl2         c_w.l(__dczerorl2.o)
     0x08000182   0x08000182   0x00000002   PAD
-    0x08000184   0x08000184   0x0000001c   Code   RO          361    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x080001a0   0x080001a0   0x00000002   Code   RO          219    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          226    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          228    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          230    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          233    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          235    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          237    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          240    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          242    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          244    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          246    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          248    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          250    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          252    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          254    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          256    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          258    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          260    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          264    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          266    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          268    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000000   Code   RO          270    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
-    0x080001a2   0x080001a2   0x00000002   Code   RO          271    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
-    0x080001a4   0x080001a4   0x00000002   Code   RO          293    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO          308    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO          310    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO          313    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO          316    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO          318    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000000   Code   RO          321    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x080001a6   0x080001a6   0x00000002   Code   RO          322    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x080001a8   0x080001a8   0x00000000   Code   RO          194    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x080001a8   0x080001a8   0x00000000   Code   RO          196    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x080001a8   0x080001a8   0x00000006   Code   RO          208    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x080001ae   0x080001ae   0x00000000   Code   RO          198    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x080001ae   0x080001ae   0x00000004   Code   RO          199    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x080001b2   0x080001b2   0x00000000   Code   RO          201    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x080001b2   0x080001b2   0x00000008   Code   RO          202    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x080001ba   0x080001ba   0x00000002   Code   RO          223    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x080001bc   0x080001bc   0x00000000   Code   RO          273    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x080001bc   0x080001bc   0x00000004   Code   RO          274    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x080001c0   0x080001c0   0x00000006   Code   RO          275    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000184   0x08000184   0x0000001c   Code   RO          363    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x080001a0   0x080001a0   0x00000002   Code   RO          221    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          228    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          230    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          232    .ARM.Collect$$libinit$$00000006  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          235    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          237    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          239    .ARM.Collect$$libinit$$00000010  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          242    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          244    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          246    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          248    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          250    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          252    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          254    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          256    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          258    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          260    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          262    .ARM.Collect$$libinit$$00000027  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          266    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          268    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          270    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000000   Code   RO          272    .ARM.Collect$$libinit$$00000034  c_w.l(libinit2.o)
+    0x080001a2   0x080001a2   0x00000002   Code   RO          273    .ARM.Collect$$libinit$$00000035  c_w.l(libinit2.o)
+    0x080001a4   0x080001a4   0x00000002   Code   RO          295    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO          310    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO          312    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO          315    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO          318    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO          320    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000000   Code   RO          323    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x080001a6   0x080001a6   0x00000002   Code   RO          324    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x080001a8   0x080001a8   0x00000000   Code   RO          196    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x080001a8   0x080001a8   0x00000000   Code   RO          198    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x080001a8   0x080001a8   0x00000006   Code   RO          210    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x080001ae   0x080001ae   0x00000000   Code   RO          200    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x080001ae   0x080001ae   0x00000004   Code   RO          201    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x080001b2   0x080001b2   0x00000000   Code   RO          203    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x080001b2   0x080001b2   0x00000008   Code   RO          204    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x080001ba   0x080001ba   0x00000002   Code   RO          225    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x080001bc   0x080001bc   0x00000000   Code   RO          275    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x080001bc   0x080001bc   0x00000004   Code   RO          276    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x080001c0   0x080001c0   0x00000006   Code   RO          277    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x080001c6   0x080001c6   0x00000002   PAD
-    0x080001c8   0x080001c8   0x00000040   Code   RO          165  * .text               startup_stm32f10x_md.o
-    0x08000208   0x08000208   0x00000006   Code   RO          190    .text               c_w.l(heapauxi.o)
-    0x0800020e   0x0800020e   0x0000004a   Code   RO          210    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000258   0x08000258   0x00000012   Code   RO          212    .text               c_w.l(exit.o)
+    0x080001c8   0x080001c8   0x00000040   Code   RO          167  * .text               startup_stm32f10x_md.o
+    0x08000208   0x08000208   0x00000006   Code   RO          192    .text               c_w.l(heapauxi.o)
+    0x0800020e   0x0800020e   0x0000004a   Code   RO          212    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000258   0x08000258   0x00000012   Code   RO          214    .text               c_w.l(exit.o)
     0x0800026a   0x0800026a   0x00000002   PAD
-    0x0800026c   0x0800026c   0x00000008   Code   RO          220    .text               c_w.l(libspace.o)
-    0x08000274   0x08000274   0x0000000c   Code   RO          283    .text               c_w.l(sys_exit.o)
-    0x08000280   0x08000280   0x00000002   Code   RO          298    .text               c_w.l(use_no_semi.o)
-    0x08000282   0x08000282   0x00000000   Code   RO          300    .text               c_w.l(indicate_semi.o)
+    0x0800026c   0x0800026c   0x00000008   Code   RO          222    .text               c_w.l(libspace.o)
+    0x08000274   0x08000274   0x0000000c   Code   RO          285    .text               c_w.l(sys_exit.o)
+    0x08000280   0x08000280   0x00000002   Code   RO          300    .text               c_w.l(use_no_semi.o)
+    0x08000282   0x08000282   0x00000000   Code   RO          302    .text               c_w.l(indicate_semi.o)
     0x08000282   0x08000282   0x00000002   PAD
-    0x08000284   0x08000284   0x00000030   Code   RO          118    .text.DelayMicro    delay.o
-    0x080002b4   0x080002b4   0x00000082   Code   RO           54    .text.GPIO_EnablePinInput  gpio.o
-    0x08000336   0x08000336   0x00000002   PAD
-    0x08000338   0x08000338   0x0000007e   Code   RO           56    .text.GPIO_EnablePinOutput  gpio.o
-    0x080003b6   0x080003b6   0x00000002   PAD
-    0x080003b8   0x080003b8   0x00000060   Code   RO           58    .text.GPIO_Init     gpio.o
-    0x08000418   0x08000418   0x000000ce   Code   RO          108    .text.I2C_Init      i2c.o
-    0x080004e6   0x080004e6   0x00000002   PAD
-    0x080004e8   0x080004e8   0x000000ce   Code   RO           84    .text.OLED_Clear    ssd1306.o
-    0x080005b6   0x080005b6   0x00000002   PAD
-    0x080005b8   0x080005b8   0x00000084   Code   RO           86    .text.OLED_Init     ssd1306.o
-    0x0800063c   0x0800063c   0x0000006a   Code   RO           82    .text.OLED_Reset    ssd1306.o
-    0x080006a6   0x080006a6   0x00000002   PAD
-    0x080006a8   0x080006a8   0x000000e4   Code   RO           80    .text.OLED_SendByte  ssd1306.o
-    0x0800078c   0x0800078c   0x00000240   Code   RO           88    .text.OLED_UpdateScreen  ssd1306.o
-    0x080009cc   0x080009cc   0x00000080   Code   RO           90    .text.OLED_WriteInTimePanel  ssd1306.o
-    0x08000a4c   0x08000a4c   0x0000024a   Code   RO           92    .text.OLED_WriteTime  ssd1306.o
-    0x08000c96   0x08000c96   0x00000002   PAD
-    0x08000c98   0x08000c98   0x00000008   Code   RO          174    .text.SetSysClock   system_stm32f10x.o
-    0x08000ca0   0x08000ca0   0x00000122   Code   RO          178    .text.SetSysClockTo72  system_stm32f10x.o
-    0x08000dc2   0x08000dc2   0x00000002   PAD
-    0x08000dc4   0x08000dc4   0x00000052   Code   RO           16    .text.SysTick_Config  main.o
-    0x08000e16   0x08000e16   0x00000002   PAD
-    0x08000e18   0x08000e18   0x00000010   Code   RO          116    .text.SysTick_Handler  delay.o
-    0x08000e28   0x08000e28   0x000000d4   Code   RO            2    .text.SystemCoreClockConfigure  main.o
-    0x08000efc   0x08000efc   0x00000122   Code   RO          176    .text.SystemCoreClockUpdate  system_stm32f10x.o
-    0x0800101e   0x0800101e   0x00000002   PAD
-    0x08001020   0x08001020   0x00000066   Code   RO          172    .text.SystemInit    system_stm32f10x.o
-    0x08001086   0x08001086   0x00000002   PAD
-    0x08001088   0x08001088   0x000000f4   Code   RO            8    .text.TIM3_IRQHandler  main.o
-    0x0800117c   0x0800117c   0x0000006c   Code   RO           67    .text.TIM3_Init     timers.o
-    0x080011e8   0x080011e8   0x0000004e   Code   RO           10    .text.TIM4_IRQHandler  main.o
-    0x08001236   0x08001236   0x00000002   PAD
-    0x08001238   0x08001238   0x0000006e   Code   RO           71    .text.TIM4_Init     timers.o
-    0x080012a6   0x080012a6   0x00000002   PAD
-    0x080012a8   0x080012a8   0x00000030   Code   RO           69    .text.__NVIC_EnableIRQ  timers.o
-    0x080012d8   0x080012d8   0x00000042   Code   RO           18    .text.__NVIC_SetPriority  main.o
-    0x0800131a   0x0800131a   0x00000002   PAD
-    0x0800131c   0x0800131c   0x00000270   Code   RO           12    .text.addTime       main.o
-    0x0800158c   0x0800158c   0x000003a2   Code   RO           14    .text.main          main.o
-    0x0800192e   0x0800192e   0x00000002   PAD
-    0x08001930   0x08001930   0x0000004c   Code   RO            6    .text.switchPin     main.o
-    0x0800197c   0x0800197c   0x00000088   Code   RO            4    .text.updateScreen  main.o
-    0x08001a04   0x08001a04   0x00000010   Data   RO          181    .rodata.AHBPrescTable  system_stm32f10x.o
-    0x08001a14   0x08001a14   0x00000020   Data   RO          356    Region$$Table       anon$$obj.o
+    0x08000284   0x08000284   0x000002a4   Code   RO           12    .text.AddTime       main.o
+    0x08000528   0x08000528   0x000000aa   Code   RO           46    .text.BUTTONS_DebounceHandler  buttons.o
+    0x080005d2   0x080005d2   0x00000002   PAD
+    0x080005d4   0x080005d4   0x00000030   Code   RO          120    .text.DelayMicro    delay.o
+    0x08000604   0x08000604   0x00000082   Code   RO           56    .text.GPIO_EnablePinInput  gpio.o
+    0x08000686   0x08000686   0x00000002   PAD
+    0x08000688   0x08000688   0x0000007e   Code   RO           58    .text.GPIO_EnablePinOutput  gpio.o
+    0x08000706   0x08000706   0x00000002   PAD
+    0x08000708   0x08000708   0x00000060   Code   RO           60    .text.GPIO_Init     gpio.o
+    0x08000768   0x08000768   0x000000ce   Code   RO          110    .text.I2C_Init      i2c.o
+    0x08000836   0x08000836   0x00000002   PAD
+    0x08000838   0x08000838   0x000000ce   Code   RO           86    .text.OLED_Clear    ssd1306.o
+    0x08000906   0x08000906   0x00000002   PAD
+    0x08000908   0x08000908   0x00000084   Code   RO           88    .text.OLED_Init     ssd1306.o
+    0x0800098c   0x0800098c   0x0000006a   Code   RO           84    .text.OLED_Reset    ssd1306.o
+    0x080009f6   0x080009f6   0x00000002   PAD
+    0x080009f8   0x080009f8   0x000000e4   Code   RO           82    .text.OLED_SendByte  ssd1306.o
+    0x08000adc   0x08000adc   0x00000240   Code   RO           90    .text.OLED_UpdateScreen  ssd1306.o
+    0x08000d1c   0x08000d1c   0x00000080   Code   RO           92    .text.OLED_WriteInTimePanel  ssd1306.o
+    0x08000d9c   0x08000d9c   0x0000024a   Code   RO           94    .text.OLED_WriteTime  ssd1306.o
+    0x08000fe6   0x08000fe6   0x00000002   PAD
+    0x08000fe8   0x08000fe8   0x00000008   Code   RO          176    .text.SetSysClock   system_stm32f10x.o
+    0x08000ff0   0x08000ff0   0x00000122   Code   RO          180    .text.SetSysClockTo72  system_stm32f10x.o
+    0x08001112   0x08001112   0x00000002   PAD
+    0x08001114   0x08001114   0x0000004c   Code   RO            6    .text.SwitchPin     main.o
+    0x08001160   0x08001160   0x00000052   Code   RO           16    .text.SysTick_Config  main.o
+    0x080011b2   0x080011b2   0x00000002   PAD
+    0x080011b4   0x080011b4   0x00000010   Code   RO          118    .text.SysTick_Handler  delay.o
+    0x080011c4   0x080011c4   0x000000d4   Code   RO            2    .text.SystemCoreClockConfigure  main.o
+    0x08001298   0x08001298   0x00000122   Code   RO          178    .text.SystemCoreClockUpdate  system_stm32f10x.o
+    0x080013ba   0x080013ba   0x00000002   PAD
+    0x080013bc   0x080013bc   0x00000066   Code   RO          174    .text.SystemInit    system_stm32f10x.o
+    0x08001422   0x08001422   0x00000002   PAD
+    0x08001424   0x08001424   0x000000f4   Code   RO            8    .text.TIM3_IRQHandler  main.o
+    0x08001518   0x08001518   0x0000006c   Code   RO           69    .text.TIM3_Init     timers.o
+    0x08001584   0x08001584   0x0000004e   Code   RO           10    .text.TIM4_IRQHandler  main.o
+    0x080015d2   0x080015d2   0x00000002   PAD
+    0x080015d4   0x080015d4   0x0000006e   Code   RO           73    .text.TIM4_Init     timers.o
+    0x08001642   0x08001642   0x00000002   PAD
+    0x08001644   0x08001644   0x00000088   Code   RO            4    .text.UpdateScreen  main.o
+    0x080016cc   0x080016cc   0x00000030   Code   RO           71    .text.__NVIC_EnableIRQ  timers.o
+    0x080016fc   0x080016fc   0x00000042   Code   RO           18    .text.__NVIC_SetPriority  main.o
+    0x0800173e   0x0800173e   0x00000002   PAD
+    0x08001740   0x08001740   0x000003d2   Code   RO           14    .text.main          main.o
+    0x08001b12   0x08001b12   0x00000010   Data   RO          183    .rodata.AHBPrescTable  system_stm32f10x.o
+    0x08001b22   0x08001b22   0x00000002   PAD
+    0x08001b24   0x08001b24   0x00000020   Data   RO          358    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001a34, Size: 0x00000170, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x0000007c])
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   COMPRESSED   0x00000001   Data   RW           22    .data.HIGHLIGHT_BUTTON_PIN  main.o
-    0x20000001   COMPRESSED   0x00000001   Data   RW           23    .data.INCREASE_NUMBER_BUTTON_PIN  main.o
-    0x20000002   COMPRESSED   0x00000001   Data   RW           20    .data.LED_PIN       main.o
-    0x20000003   COMPRESSED   0x00000001   Data   RW           21    .data.MODE_BUTTON_PIN  main.o
-    0x20000004   COMPRESSED   0x00000096   Data   RW           97    .data.NUMBERS       ssd1306.o
-    0x2000009a   COMPRESSED   0x00000041   Data   RW           95    .data.SET_ALARM_MESSAGE  ssd1306.o
-    0x200000db   COMPRESSED   0x0000003f   Data   RW           94    .data.SET_TIME_MESSAGE  ssd1306.o
-    0x2000011a   COMPRESSED   0x00000001   Data   RW           24    .data.STOP_ALARM_BUTTON_PIN  main.o
-    0x2000011b   COMPRESSED   0x00000001   PAD
-    0x2000011c   COMPRESSED   0x00000004   Data   RW          180    .data.SystemCoreClock  system_stm32f10x.o
-    0x20000120   COMPRESSED   0x00000050   Data   RW          100    .data.timePanel     ssd1306.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000170, Load base: 0x08001ab0, Size: 0x00000790, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001b44, Size: 0x00000174, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000080])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000170        -       0x00000060   Zero   RW          221    .bss                c_w.l(libspace.o)
-    0x200001d0        -       0x00000001   Zero   RW           36    .bss.alarmSet       main.o
-    0x200001d1        -       0x00000004   Zero   RW           26    .bss.alarmTime      main.o
-    0x200001d5        -       0x00000001   Zero   RW           31    .bss.buzzer         main.o
-    0x200001d6        -       0x00000004   Zero   RW           28    .bss.clockTime      main.o
-    0x200001da        -       0x00000006   Zero   RW           33    .bss.highlightButton  main.o
-    0x200001e0        -       0x00000080   Zero   RW           99    .bss.highlightPanel  ssd1306.o
-    0x20000260        -       0x00000001   Zero   RW           27    .bss.highlightedNumber  main.o
-    0x20000261   0x08001ab0   0x00000001   PAD
-    0x20000262        -       0x00000006   Zero   RW           34    .bss.incNumberButton  main.o
-    0x20000268        -       0x00000001   Zero   RW           25    .bss.mode           main.o
-    0x20000269   0x08001ab0   0x00000001   PAD
-    0x2000026a        -       0x00000006   Zero   RW           32    .bss.modeButton     main.o
-    0x20000270        -       0x00000080   Zero   RW           98    .bss.modePanel      ssd1306.o
-    0x200002f0        -       0x00000004   Zero   RW          120    .bss.msTicks        delay.o
-    0x200002f4        -       0x00000001   Zero   RW           30    .bss.screenChanged  main.o
-    0x200002f5   0x08001ab0   0x00000001   PAD
-    0x200002f6        -       0x00000006   Zero   RW           35    .bss.stopAlarmButton  main.o
-    0x200002fc        -       0x00000004   Zero   RW           29    .bss.totalSeconds   main.o
-    0x20000300        -       0x00000200   Zero   RW          163    HEAP                startup_stm32f10x_md.o
-    0x20000500        -       0x00000400   Zero   RW          162    STACK               startup_stm32f10x_md.o
+    0x20000000   COMPRESSED   0x00000004   Data   RW           25    .data.BUTTON_DEBOUNCE_LIMIT  main.o
+    0x20000004   COMPRESSED   0x00000001   Data   RW           22    .data.HIGHLIGHT_BUTTON_PIN  main.o
+    0x20000005   COMPRESSED   0x00000001   Data   RW           23    .data.INCREASE_NUMBER_BUTTON_PIN  main.o
+    0x20000006   COMPRESSED   0x00000001   Data   RW           20    .data.LED_PIN       main.o
+    0x20000007   COMPRESSED   0x00000001   Data   RW           21    .data.MODE_BUTTON_PIN  main.o
+    0x20000008   COMPRESSED   0x00000096   Data   RW           99    .data.NUMBERS       ssd1306.o
+    0x2000009e   COMPRESSED   0x00000041   Data   RW           97    .data.SET_ALARM_MESSAGE  ssd1306.o
+    0x200000df   COMPRESSED   0x0000003f   Data   RW           96    .data.SET_TIME_MESSAGE  ssd1306.o
+    0x2000011e   COMPRESSED   0x00000001   Data   RW           24    .data.STOP_ALARM_BUTTON_PIN  main.o
+    0x2000011f   COMPRESSED   0x00000001   PAD
+    0x20000120   COMPRESSED   0x00000004   Data   RW          182    .data.SystemCoreClock  system_stm32f10x.o
+    0x20000124   COMPRESSED   0x00000050   Data   RW          102    .data.timePanel     ssd1306.o
+
+
+    Execution Region ER_ZI (Exec base: 0x20000178, Load base: 0x08001bc4, Size: 0x000007a8, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000178        -       0x00000060   Zero   RW          223    .bss                c_w.l(libspace.o)
+    0x200001d8        -       0x00000001   Zero   RW           37    .bss.alarmSet       main.o
+    0x200001d9        -       0x00000004   Zero   RW           27    .bss.alarmTime      main.o
+    0x200001dd   0x08001bc4   0x00000003   PAD
+    0x200001e0        -       0x00000010   Zero   RW           48    .bss.buttonCounts   buttons.o
+    0x200001f0        -       0x00000004   Zero   RW           49    .bss.buttonStates   buttons.o
+    0x200001f4        -       0x00000001   Zero   RW           32    .bss.buzzer         main.o
+    0x200001f5        -       0x00000004   Zero   RW           29    .bss.clockTime      main.o
+    0x200001f9   0x08001bc4   0x00000001   PAD
+    0x200001fa        -       0x00000006   Zero   RW           34    .bss.highlightButton  main.o
+    0x20000200        -       0x00000080   Zero   RW          101    .bss.highlightPanel  ssd1306.o
+    0x20000280        -       0x00000001   Zero   RW           28    .bss.highlightedNumber  main.o
+    0x20000281   0x08001bc4   0x00000001   PAD
+    0x20000282        -       0x00000006   Zero   RW           35    .bss.incNumberButton  main.o
+    0x20000288        -       0x00000001   Zero   RW           26    .bss.mode           main.o
+    0x20000289   0x08001bc4   0x00000001   PAD
+    0x2000028a        -       0x00000006   Zero   RW           33    .bss.modeButton     main.o
+    0x20000290        -       0x00000080   Zero   RW          100    .bss.modePanel      ssd1306.o
+    0x20000310        -       0x00000004   Zero   RW          122    .bss.msTicks        delay.o
+    0x20000314        -       0x00000001   Zero   RW           31    .bss.screenChanged  main.o
+    0x20000315   0x08001bc4   0x00000001   PAD
+    0x20000316        -       0x00000006   Zero   RW           36    .bss.stopAlarmButton  main.o
+    0x2000031c        -       0x00000004   Zero   RW           30    .bss.totalSeconds   main.o
+    0x20000320        -       0x00000200   Zero   RW          165    HEAP                startup_stm32f10x_md.o
+    0x20000520        -       0x00000400   Zero   RW          164    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -856,19 +869,20 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
+       170          0          0          0         20        893   buttons.o
         64          0          0          0          4        728   delay.o
        352          0          0          0          0       1581   gpio.o
        206          0          0          0          0       1726   i2c.o
-      2448          0          0          5         41       7077   main.o
+      2548          0          0          9         41       7169   main.o
       1962          0          0        358        256       3898   ssd1306.o
         64         26        236          0       1536        836   startup_stm32f10x_md.o
        690          0         16          4          0       2863   system_stm32f10x.o
        266          0          0          0          0       3714   timers.o
 
     ----------------------------------------------------------------------
-      6080         26        284        368       1840      22423   Object Totals
+      6350         26        286        372       1864      23408   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        28          0          0          1          3          0   (incl. Padding)
+        28          0          2          1          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -915,15 +929,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      6424         42        284        368       1936      22779   Grand Totals
-      6424         42        284        124       1936      22779   ELF Image Totals (compressed)
-      6424         42        284        124          0          0   ROM Totals
+      6694         42        286        372       1960      23744   Grand Totals
+      6694         42        286        128       1960      23744   ELF Image Totals (compressed)
+      6694         42        286        128          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 6708 (   6.55kB)
-    Total RW  Size (RW Data + ZI Data)              2304 (   2.25kB)
-    Total ROM Size (Code + RO Data + RW Data)       6832 (   6.67kB)
+    Total RO  Size (Code + RO Data)                 6980 (   6.82kB)
+    Total RW  Size (RW Data + ZI Data)              2332 (   2.28kB)
+    Total ROM Size (Code + RO Data + RW Data)       7108 (   6.94kB)
 
 ==============================================================================
 
